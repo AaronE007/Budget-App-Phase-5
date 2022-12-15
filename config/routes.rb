@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :user_bills
   resources :income_categories
   resources :incomes
   resources :users
