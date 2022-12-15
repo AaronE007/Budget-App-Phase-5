@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :income_categories
   resources :incomes
   resources :users
   # Routing logic: fallback requests for React Router.
