@@ -8,3 +8,5 @@
 
 
 u1 = User.create(username: 'Aaron', email: 'aaron@aaronmail.com', password: 'Aaron', bio: 'Stock guy')
+
+
