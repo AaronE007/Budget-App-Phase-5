@@ -17,22 +17,20 @@ ActiveRecord::Schema.define(version: 2022_12_27_235835) do
 
   create_table "expense_categories", force: :cascade do |t|
     t.string "name"
-    t.integer "balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "income_categories", force: :cascade do |t|
     t.string "name"
-    t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "incomes", force: :cascade do |t|
     t.string "name"
-    t.string "type"
-    t.integer "amount"
+    t.string "description"
+    t.decimal "amount"
     t.string "time_period"
     t.bigint "user_id", null: false
     t.bigint "income_category_id", null: false
@@ -45,7 +43,7 @@ ActiveRecord::Schema.define(version: 2022_12_27_235835) do
   create_table "user_bills", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "amount"
+    t.decimal "amount"
     t.bigint "user_id", null: false
     t.bigint "expense_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -57,6 +55,8 @@ ActiveRecord::Schema.define(version: 2022_12_27_235835) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
+    t.string "password_digest"
+    t.string "bio"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
