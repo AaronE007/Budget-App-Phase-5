@@ -1,3 +1,4 @@
 class IncomeSerializer < ActiveModel::Serializer
-  attributes :id, :name, :type, :amount
+  attributes :id, :name, :amount, :time_period
 end
+
