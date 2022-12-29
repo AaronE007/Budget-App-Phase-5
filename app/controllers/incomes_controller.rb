@@ -3,9 +3,9 @@ class IncomesController < ApplicationController
 
   # GET /incomes
   def index
-    @incomes = Income.all
+    income = Income.all
 
-    render json: @incomes
+    render json: income
   end
 
   # GET /incomes/1

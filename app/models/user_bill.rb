@@ -1,4 +1,4 @@
 class UserBill < ApplicationRecord
   belongs_to :user
-  belongs_to :expense_categories
+  belongs_to :expense_category
 end
