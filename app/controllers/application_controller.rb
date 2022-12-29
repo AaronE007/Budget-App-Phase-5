@@ -13,4 +13,8 @@ class ApplicationController < ActionController::API
     no_route unless current_user
   end
 
+  def no_route
+    render json {error ["Not authorized"]}
+  end 
+
 end
