@@ -9,4 +9,8 @@ class ApplicationController < ActionController::API
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end 
 
+  def authorize!
+    no_route unless current_user
+  end
+
 end
