@@ -1,6 +1,15 @@
-import React from 'react'
+import React, {useState, useEffect} from "react";
 
-const User = () => {
+const UserContext = React.createContext();
+
+
+const UserProvider = ({children}) => {
+
+  const[user, setUser ] = useState({});
+  const[loggeddIn, setLoggedIN] = useState([])
+
+ 
+
   return (
     <div>
       
