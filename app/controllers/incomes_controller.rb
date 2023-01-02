@@ -3,18 +3,14 @@ class IncomesController < ApplicationController
 
   # GET /incomes
   def index
-    income = Income.all
+    income = current_user.incomes
 
     render json: income
   end
 
-  # GET /incomes/1
-  def show
-    render json: @income
-  end
-
   # POST /incomes
   def create
+
     income = Income.create(income_params)
     render json: income
   end
@@ -34,10 +30,6 @@ class IncomesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_income
-      @income = Income.find(params[:id])
-    end
 
     # Only allow a list of trusted parameters through.
     def income_params
