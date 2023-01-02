@@ -28,3 +28,25 @@ const Navbar = () => {
       navigate('/')
     })
   }
+
+  if(loggedIn){
+    return (
+      <div>
+        <h1>Hello {user.username}</h1>
+        <button onClick={userLogout}> Logout here</button>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <Link style={style} to="/">Home</Link>
+        
+        <Link style={style} to="/login">Login</Link>
+       
+        <Link style={style} to="/signup">Sign Up</Link>
+      </div>
+    )
+  } 
+}
+
+export default Navbar
