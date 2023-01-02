@@ -31,6 +31,11 @@ const UserProvider = ({children}) => {
     setUser({})
     setLoggedIn(false)
   }
+
+  const signup = (user) => {
+    setUser(user)
+    setLoggedIn(true)
+  }
  
 
   return (
@@ -40,4 +45,4 @@ const UserProvider = ({children}) => {
   )
 }
 
-export default User
+export {UserContext, UserProvider}
