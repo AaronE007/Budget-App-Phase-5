@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import SignUpForm from "./components/SignUpForm";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
