@@ -4,7 +4,6 @@ class IncomesController < ApplicationController
   # GET /incomes
   def index
     income = current_user.incomes
-
     render json: income
   end
 
@@ -17,11 +16,13 @@ class IncomesController < ApplicationController
 
   # PATCH/PUT /incomes/1
   def update
-    if @income.update(income_params)
-      render json: @income
-    else
-      render json: @income.errors, status: :unprocessable_entity
-    end
+   if income = current.user.stocks.find(params[:id])
+    income.update!(income_params)
+    income.reload
+    render json: income
+   else 
+    no_route
+   end 
   end
 
   # DELETE /incomes/1
