@@ -10,7 +10,7 @@ class IncomesController < ApplicationController
 
   # POST /incomes
   def create
-
+    income_category = Income_category.find_or_create_by(name: params['income_category'])
     income = Income.create(income_params)
     render json: income
   end
@@ -26,14 +26,15 @@ class IncomesController < ApplicationController
 
   # DELETE /incomes/1
   def destroy
-    @income.destroy
+    income = current_user.incomes.find(params[:id])
+    income.destroy
   end
 
   private
 
     # Only allow a list of trusted parameters through.
     def income_params
-      params.require(:income).permit(:name, :description, :amount, :time_period)
+      params.require(:income).permit(:name, :description, :amount, :time_period, :income_category)
     end
 end
 
