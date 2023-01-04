@@ -6,6 +6,7 @@ import SignUpForm from "./components/SignUpForm";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import LoginForm from "./components/LoginForm";
+import IncomeCatCont from "./containers/IncomeCatCont";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginForm/>} />
         <Route path="/signup" element={<SignUpForm/>} />
+        <Route path="/income_categories" element={<IncomeCatCont/>} />
         <Route path="/" element={<Home />} />
       </Routes>
       <Footer/>

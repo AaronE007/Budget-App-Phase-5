@@ -6,7 +6,8 @@ const UserContext = React.createContext();
 const UserProvider = ({children}) => {
 
   const[user, setUser ] = useState({});
-  const[loggeddIn, setLoggedIn] = useState([])
+  const[incomeCat, setIncomeCat] = useState([])
+  const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
     fetch('/me')
@@ -15,8 +16,10 @@ const UserProvider = ({children}) => {
       setUser(data) 
         if (data.error) {
         setLoggedIn(false)
+        setIncomeCat([])
       }else {
         setLoggedIn(true)
+        setIncomeCat(data.income_categories)
       }
     })
   }, [])
@@ -24,7 +27,7 @@ const UserProvider = ({children}) => {
   const login = (user) => {
     setUser(user)
     setLoggedIn(true)
-   
+    setIncomeCat(user.income_categories)
   }
 
   const logout = () => {
@@ -35,11 +38,12 @@ const UserProvider = ({children}) => {
   const signup = (user) => {
     setUser(user)
     setLoggedIn(true)
+    setIncomeCat([])
   }
  
 
   return (
-    <UserContext.Provider value={{user, loggeddIn, login, logout, signup}}>
+    <UserContext.Provider value={{user, loggedIn, incomeCat, login, logout, signup}}>
       {children}
     </UserContext.Provider>
   )

@@ -29,14 +29,16 @@ const Navbar = () => {
     })
   }
 
-  if(loggedIn){
+  if(loggedIn) 
+  {
     return (
       <div>
         <h1>Hello {user.username}</h1>
+        <Link  to="/income_categories">Income Categories</Link>
         <button onClick={userLogout}> Logout here</button>
       </div>
     )
-  } else {
+   } else {
     return (
       <div>
         <Link style={style} to="/">Home</Link>
@@ -50,3 +52,7 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+
+
