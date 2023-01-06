@@ -1,11 +1,9 @@
 class UserBillsController < ApplicationController
-  before_action :set_user_bill, only: [:show, :update, :destroy]
 
   # GET /user_bills
   def index
-    @user_bills = UserBill.all
-
-    render json: @user_bills
+    bills = current_user.user_bills
+    render json: bills
   end
 
   # GET /user_bills/1
@@ -39,13 +37,7 @@ class UserBillsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user_bill
-      @user_bill = UserBill.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
     def user_bill_params
-      params.require(:user_bill).permit(:name, :description, :amount)
+      params.require(:user_bill).permit(:name, :description, :amount, )
     end
 end

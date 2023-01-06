@@ -1,10 +1,9 @@
 class IncomesController < ApplicationController
-  before_action :set_income, only: [:show, :update, :destroy]
 
   # GET /incomes
   def index
-    income = current_user.incomes
-    render json: income
+    incomes = current_user.incomes
+    render json: incomes
   end
 
   # POST /incomes

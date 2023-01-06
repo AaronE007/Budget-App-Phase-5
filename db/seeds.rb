@@ -16,14 +16,3 @@ ec1 = ExpenseCategory.create(name: 'House Hold Bill')
 ub1 = UserBill.create(user_id: u1.id, expense_category_id: ec1.id, name: 'Internet Bill', description: 'Got dang interwebs money.', amount: '500.40')
 
 
-# create_table "user_bills", force: :cascade do |t|
-#   t.string "name"
-#   t.string "description"
-#   t.decimal "amount"
-#   t.bigint "user_id", null: false
-#   t.bigint "expense_category_id", null: false
-#   t.datetime "created_at", precision: 6, null: false
-#   t.datetime "updated_at", precision: 6, null: false
-#   t.index ["expense_category_id"], name: "index_user_bills_on_expense_category_id"
-#   t.index ["user_id"], name: "index_user_bills_on_user_id"
-# end
