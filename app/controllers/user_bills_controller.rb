@@ -6,30 +6,24 @@ class UserBillsController < ApplicationController
     render json: bills
   end
 
-  # GET /user_bills/1
-  def show
-    render json: @user_bill
-  end
 
   # POST /user_bills
   def create
-    @user_bill = UserBill.new(user_bill_params)
-
-    if @user_bill.save
-      render json: @user_bill, status: :created, location: @user_bill
-    else
-      render json: @user_bill.errors, status: :unprocessable_entity
-    end
+    expense_category = ExpenseCategory.find_or_create_by(name: params['expense_category'])
+    user_bill = UserBill.create(user_bill_params)
+    render json: user_bill
   end
 
   # PATCH/PUT /user_bills/1
   def update
-    if @user_bill.update(user_bill_params)
-      render json: @user_bill
-    else
-      render json: @user_bill.errors, status: :unprocessable_entity
-    end
-  end
+    if user_bill = current.user.user_bills.find(params[:id])
+     user_bill.update!(user_bill_params)
+     user_bill.reload
+     render json: user_bill
+    else 
+     no_route
+    end 
+   end
 
   # DELETE /user_bills/1
   def destroy
@@ -38,6 +32,6 @@ class UserBillsController < ApplicationController
 
   private
     def user_bill_params
-      params.require(:user_bill).permit(:name, :description, :amount, )
+      params.require(:user_bill).permit(:name, :description, :amount, :expense_category)
     end
 end
