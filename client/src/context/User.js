@@ -7,6 +7,7 @@ const UserProvider = ({children}) => {
 
   const[user, setUser ] = useState({});
   const[incomeCat, setIncomeCat] = useState([])
+  const[expenseCat, setExpenseCat] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -17,9 +18,11 @@ const UserProvider = ({children}) => {
         if (data.error) {
         setLoggedIn(false)
         setIncomeCat([])
+        setExpenseCat([])
       }else {
         setLoggedIn(true)
         setIncomeCat(data.income_categories)
+        setExpenseCat(data.expense_categories)
       }
     })
   }, [])
