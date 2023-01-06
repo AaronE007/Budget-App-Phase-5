@@ -1,10 +1,11 @@
 import React from 'react'
-impor
+import ExpenseCatCard from './ExpenseCatCard'
+import { UserContext } from '../context/user'
 
 const ExpenseCatList = () => {
 
   const {expenseCat} = useContext(UserContext)
-  const renderExpenseCat = incomeCat.map(incomeCategory => <IncomeCatCard key={incomeCategory.id} incomeCategory={incomeCategory}/>)
+  const renderExpenseCat = expenseCat.map(expenseCategory => <ExpenseCatCard key={expenseCategory.id} expenseCategory={expenseCategory}/>)
  
   return (
     <div>
