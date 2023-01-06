@@ -8,22 +8,22 @@
 
 
 u1 = User.create(username: 'Aaron', email: 'aaron@aaronmail.com', password: 'Aaron', bio: 'Stock guy')
-
 ic1 = IncomeCategory.create(name: 'Paycheck')
-
-
 i1 = Income.create(user_id: u1.id, income_category_id: ic1.id, name: 'Teacher Pay Check', description: 'Pay check from teaching those miserable children.', amount: '3.50', time_period: 'Bi-Weekly')
 
 
-# create_table "incomes", force: :cascade do |t|
+ec1 = ExpenseCategory.create(name: 'House Hold Bill')
+ub1 = UserBill.create(user_id: u1.id, expense_category_id: ec1.id, name: 'Internet Bill', description: 'Got dang interwebs money.', amount: '500.40')
+
+
+# create_table "user_bills", force: :cascade do |t|
 #   t.string "name"
 #   t.string "description"
 #   t.decimal "amount"
-#   t.string "time_period"
 #   t.bigint "user_id", null: false
-#   t.bigint "income_category_id", null: false
+#   t.bigint "expense_category_id", null: false
 #   t.datetime "created_at", precision: 6, null: false
 #   t.datetime "updated_at", precision: 6, null: false
-#   t.index ["income_category_id"], name: "index_incomes_on_income_category_id"
-#   t.index ["user_id"], name: "index_incomes_on_user_id"
+#   t.index ["expense_category_id"], name: "index_user_bills_on_expense_category_id"
+#   t.index ["user_id"], name: "index_user_bills_on_user_id"
 # end
