@@ -27,7 +27,8 @@ class UserBillsController < ApplicationController
 
   # DELETE /user_bills/1
   def destroy
-    @user_bill.destroy
+    user_bill = current_user.user_bills.find(params[:id])
+    user_bill.destroy
   end
 
   private
