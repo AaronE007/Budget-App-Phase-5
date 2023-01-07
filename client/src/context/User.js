@@ -31,6 +31,7 @@ const UserProvider = ({children}) => {
     setUser(user)
     setLoggedIn(true)
     setIncomeCat(user.income_categories)
+    setExpenseCat(user.expense_categories)
   }
 
   const logout = () => {
@@ -42,6 +43,7 @@ const UserProvider = ({children}) => {
     setUser(user)
     setLoggedIn(true)
     setIncomeCat([])
+    setExpenseCat([])
   }
  
 
