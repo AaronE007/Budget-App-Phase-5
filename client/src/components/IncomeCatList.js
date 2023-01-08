@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import IncomeCatCard from './IncomeCatCard'
-import { UserContext } from '../context/user'
+import { UserContext } from '../context/User'
 
 const IncomeCatList = () => {
 

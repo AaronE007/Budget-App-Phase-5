@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import ExpenseCatCard from './ExpenseCatCard'
-import { UserContext } from '../context/user'
+import { UserContext } from '../context/User'
 
 const ExpenseCatList = () => {
 

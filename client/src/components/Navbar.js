@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../context/user'
+import { UserContext } from '../context/User'
 import {useNavigate} from "react-router-dom"
 
 const style = {
