@@ -21,22 +21,14 @@ ActiveRecord::Schema.define(version: 2022_12_27_235835) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "income_categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "incomes", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.decimal "amount"
     t.string "time_period"
     t.bigint "user_id", null: false
-    t.bigint "income_category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["income_category_id"], name: "index_incomes_on_income_category_id"
     t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
@@ -61,7 +53,6 @@ ActiveRecord::Schema.define(version: 2022_12_27_235835) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "incomes", "income_categories"
   add_foreign_key "incomes", "users"
   add_foreign_key "user_bills", "expense_categories"
   add_foreign_key "user_bills", "users"
