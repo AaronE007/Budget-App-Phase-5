@@ -23,7 +23,6 @@ ActiveRecord::Schema.define(version: 2022_12_27_235835) do
 
   create_table "incomes", force: :cascade do |t|
     t.string "name"
-    t.string "description"
     t.decimal "amount"
     t.string "time_period"
     t.bigint "user_id", null: false
