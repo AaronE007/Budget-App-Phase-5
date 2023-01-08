@@ -8,7 +8,7 @@
 
 
 u1 = User.create(username: 'Aaron', email: 'aaron@aaronmail.com', password: 'Aaron', bio: 'Stock guy')
-i1 = Income.create(user_id: u1.id, income_category_id: ic1.id, name: 'Teacher Pay Check', description: 'Pay check from teaching those miserable children.', amount: '3.50', time_period: 'Bi-Weekly')
+i1 = Income.create(user_id: u1.id, name: 'Teacher Pay Check', description: 'Pay check from teaching those miserable children.', amount: '3.50', time_period: 'Bi-Weekly')
 
 
 ec1 = ExpenseCategory.create(name: 'House Hold Bill')
