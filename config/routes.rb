@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  namespace :api do
   resources :expense_categories
   resources :user_bills
   resources :income_categories
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
+  end 
+  
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 end
 
