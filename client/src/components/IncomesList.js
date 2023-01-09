@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { UserContext } from '../context/User'
 import IncomeCard from './IncomeCard'
 
