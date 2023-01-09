@@ -14,17 +14,3 @@ class UserSerializer < ActiveModel::Serializer
   end 
 end
 
-
-
-# "expense_categories": [
-# {
-#   "id": 1,
-#   "name": "House Hold Bill",
-#   "user_bills": [
-#   {
-#   "id": 1,
-#   "name": "Internet Bill",
-#   "description": "Got dang interwebs money.",
-#   "amount": "500.4"
-#   }
-#   ]
