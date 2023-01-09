@@ -1,10 +1,11 @@
 import React from 'react'
-import IncomeCont from ''
+import IncomesList from '../components/IncomesList';
+
 const IncomeCont = () => {
   return (
     <div>
       <h2>Incomes</h2>
-      <Income/>
+      <IncomesList/>
     </div>
   )
 }
