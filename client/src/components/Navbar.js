@@ -35,6 +35,7 @@ const Navbar = () => {
       <div>
         <h1>Hello {user.username}</h1>
         <Link  to="/expense_categories">Expense Categories</Link>
+        <Link  to="/incomes">Income</Link>
         <button onClick={userLogout}> Logout here</button>
       </div>
     )
