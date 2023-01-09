@@ -7,6 +7,7 @@ const UserProvider = ({children}) => {
 
   const[user, setUser ] = useState({});
   const[expenseCat, setExpenseCat] = useState([])
+  const[incomes, setIncomes] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
 
   useEffect(() => {
@@ -17,9 +18,11 @@ const UserProvider = ({children}) => {
         if (data.error) {
         setLoggedIn(false)
         setExpenseCat([])
+        setIncomes([])
       }else {
         setLoggedIn(true)
         setExpenseCat(data.expense_categories)
+        setIncomes(data.incomes)
       }
     })
   }, [])
@@ -28,6 +31,7 @@ const UserProvider = ({children}) => {
     setUser(user)
     setLoggedIn(true)
     setExpenseCat(user.expense_categories)
+    setIncomes(user.incomes)
   }
 
   const logout = () => {
@@ -39,11 +43,12 @@ const UserProvider = ({children}) => {
     setUser(user)
     setLoggedIn(true)
     setExpenseCat([])
+    setIncomes([])
   }
  
 
   return (
-    <UserContext.Provider value={{user, loggedIn, expenseCat, login, logout, signup}}>
+    <UserContext.Provider value={{user, loggedIn, expenseCat, incomes, login, logout, signup}}>
       {children}
     </UserContext.Provider>
   )
