@@ -1,10 +1,12 @@
 import React from 'react'
 
 const BillList = ({bills}) => {
-  console.log(bills)
+
+  const renderBills = bills.map(bill => <BillCard key={bill.id} expenseCategory={expenseCategory}/>)
+  
   return (
     <div>
-      
+    {renderBills}
     </div>
   )
 }
