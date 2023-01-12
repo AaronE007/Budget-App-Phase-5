@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import ReactCardFlip from 'react-card-flip';
-// import BillList from './BillList';
+import BillList from './BillList';
 
 
 const ExpenseCatCard = ({expenseCategory}) => {
@@ -22,7 +22,7 @@ const ExpenseCatCard = ({expenseCategory}) => {
     </div>
     <div style={{margin: "auto", border: "solid", backgroundColor: "peachpuff", height: 600, width: 300, color: "#2a6592"}}>
       <div>
-      <h3>hello</h3>
+        <BillList bills={expenseCategory.user_bills}/>
       </div>
       <br/>
         <button onClick={handleClick}>Click to Return to Category</button>

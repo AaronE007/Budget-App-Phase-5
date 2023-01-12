@@ -6,7 +6,7 @@ const BillList = ({bills}) => {
   
   return (
     <div>
-    {renderBills}
+      {renderBills}
     </div>
   )
 }
