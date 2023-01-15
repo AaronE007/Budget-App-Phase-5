@@ -1,7 +1,7 @@
 import React,{ useState, useContext } from "react";
 import {UserContext} from "../context/user";
 
-const CompaniesForm = () => {
+const IncomeForm = () => {
   const [name, setName] = useState("")
   const [amount, setAmount] = useState("")
   const {addIncome} = useContext(UserContext)
@@ -36,4 +36,4 @@ const CompaniesForm = () => {
   )
 }
 
-export default CompaniesForm
+export default IncomeForm
