@@ -10,7 +10,7 @@ const IncomeCont = () => {
       <br/>
       <br/>
       <h2>Incomes</h2>
-      <IncomesList/>
+      <IncomesList />
     </div>
   )
 }

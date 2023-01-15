@@ -46,11 +46,20 @@ const UserProvider = ({children}) => {
     setIncomes([])
   }
 
-  
+  const addBill = () => {
+
+  }
+
+  const onUpdateBill = () => {
+
+  }
  
+  const addIncome = () => {
+    
+  }
 
   return (
-    <UserContext.Provider value={{user, loggedIn, expenseCat, incomes, login, logout, signup}}>
+    <UserContext.Provider value={{user, loggedIn, expenseCat, incomes, login, logout, signup, addBill, onUpdateBill, addIncome }}>
       {children}
     </UserContext.Provider>
   )

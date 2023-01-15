@@ -10,7 +10,7 @@ const ExpenseCatCont = () => {
       <br/>
       <br/>
       <h2>Expense Categories</h2>
-      <ExpenseCatList/>  
+      <ExpenseCatList />  
     </div>
   )
 }
