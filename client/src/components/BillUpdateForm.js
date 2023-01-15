@@ -36,7 +36,7 @@ const BillUpdateForm = ({id}) => {
     .then(res => res.json())
     .then(updatedBill => {
         if (!updatedBill.errors) {
-          onUpdateStock(updatedBill)
+          onUpdateBill(updatedBill)
         } else {
           const errorsList = updatedBill.errors.map(e => <li>{e}</li>)
           setErrors(errorsList)

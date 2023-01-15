@@ -9,7 +9,7 @@ const IncomeForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    addCompany({
+    addIncome({
       name: name,
       amount: amount
     })
