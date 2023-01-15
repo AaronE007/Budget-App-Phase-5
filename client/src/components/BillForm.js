@@ -21,6 +21,7 @@ const BillForm = () => {
     name: userbill.name,
     description: userbill.description,
     amount: userbill.amount,
+    
   }
   
   function handleSubmit(e) {
@@ -49,7 +50,7 @@ const BillForm = () => {
         <br/>
         <br/>
       <label>Descriptiont: </label>
-      <input onChange={handleChange} type="text" name="desciption" value={userbill.description} required/>
+      <input onChange={handleChange} type="text" name="description" value={userbill.description} required/>
         <br/>
         <br/>
       <label>Amount: </label>

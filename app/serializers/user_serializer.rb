@@ -11,6 +11,7 @@ class UserSerializer < ActiveModel::Serializer
       "user_bills": ec.user_bills
     } 
     end 
-  end 
+  end
+
 end
 
