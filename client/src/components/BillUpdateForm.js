@@ -5,42 +5,40 @@ import { UserContext } from "../context/user"
 const BillUpdateForm = ({id}) => {
   const [errors, setErrors] = useState([])
   const {onUpdateBill} = useContext(UserContext)
-  const [bill, setBill] = useState({
+  const [userbill, setUserBill] = useState({
     name: "", 
-    pricePurchasedAt: "",
-    number: "",
-    info: ""
+    description: "",
+    amount: ""
   })
  
   const handleChange = (e) => {
-    setStock({
-      ...stock,
+    setUserBill({
+      ...userbill,
       [e.target.name]: e.target.value
     })
   }
 
-  const newStock = {
-    name: stock.name,
-    price_purchased_at: stock.pricePurchasedAt,
-    number: stock.number,
-    info: stock.info
+  const newBill = {
+    name: userbill.name,
+    description: userbill.description,
+    amount: userbill.amount
   }
   
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/stocks/${id}`, {
+    fetch(`/user_bills/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newStock),
+      body: JSON.stringify(newBill),
    })
     .then(res => res.json())
-    .then(updatedStock => {
-        if (!updatedStock.errors) {
-          onUpdateStock(updatedStock)
+    .then(updatedBill => {
+        if (!updatedBill.errors) {
+          onUpdateStock(updatedBill)
         } else {
-          const errorsList = updatedStock.errors.map(e => <li>{e}</li>)
+          const errorsList = updatedBill.errors.map(e => <li>{e}</li>)
           setErrors(errorsList)
         }
      })
@@ -50,17 +48,17 @@ const BillUpdateForm = ({id}) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>Name: </label>
-        <input onChange={handleChange} type="text" name="name" value={stock.name} required/>
-          <br/>
-          <br/>
-        <label>Amount: </label>
-        <input onChange={handleChange} type="number" name="pricePurchasedAt" value={stock.pricePurchasedAt} required/>
+        <input onChange={handleChange} type="text" name="name" value={userbill.name} required/>
           <br/>
           <br/>
         <label>Description: </label>
-        <input onChange={handleChange} type="text" name="description" value={stock.number} required/>
+        <input onChange={handleChange} type="number" name="description" value={userbill.description} required/>
           <br/>
-        <input type="submit" value="Change Stock Buy Data" />
+          <br/>
+        <label>Amount: </label>
+        <input onChange={handleChange} type="text" name="amount" value={userbill.amount} required/>
+          <br/>
+        <input type="submit" value="Change Bill Data" />
       </form>
       <ul>
         {errors}

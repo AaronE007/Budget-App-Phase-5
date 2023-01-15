@@ -2,16 +2,16 @@ import { useState, useContext } from "react"
 import React  from 'react'
 import { UserContext } from "../context/user"
 
-const StockForm = () => {
+const BillForm = () => {
   const {addBill} = useContext(UserContext)
-  const [userbill, setBill] = useState({
+  const [userbill, setUserBill] = useState({
     name: "", 
     description: "",
     amount: ""
   })
 
   const handleChange = (e) => {
-    setBill({
+    setUserBill({
       ...userbill,
       [e.target.name]: e.target.value
     })
@@ -25,7 +25,7 @@ const StockForm = () => {
   
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/`, {
+    fetch(`/user_bills`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,4 +59,4 @@ const StockForm = () => {
   )
 }
 
-export default StockForm
+export default BillForm
