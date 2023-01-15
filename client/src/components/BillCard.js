@@ -14,17 +14,19 @@ const BillCard = ({bill}) => {
 
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-    <div style={{margin: "auto", border: "solid", backgroundColor: "#2a6592", height: 200, width:200, color: "#db9833"}}>
+    <div style={{margin: "auto", border: "solid", backgroundColor: "#2a6592", height: 250, width:200, color: "#db9833"}}>
       <h3>Name: {bill.name}</h3>
       <h4>Amount: {bill.amount}</h4>
       <h4>Description: {bill.description}</h4>
+      <br/>
+      <button onClick={handleClick}>Click to Change Bill</button>
     </div>
-  <div style={{margin: "auto", border: "solid", backgroundColor: "peachpuff", height: 200, width: 200, color: "#2a6592"}}>
+  <div style={{margin: "auto", border: "solid", backgroundColor: "peachpuff", height: 250, width: 200, color: "#2a6592"}}>
     <div>
       <BillUpdateForm />
     </div>
     <br/>
-      <button onClick={handleClick}>Click to Return to Category</button>
+      <button onClick={handleClick}>Click to See Updated Bill</button>
   </div>
   </ReactCardFlip> 
   )

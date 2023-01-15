@@ -40,18 +40,21 @@ const BillForm = () => {
 
   return (
   <div>
-    <form onSubmit={handleSubmit} style={{margin: "auto", border: "solid", backgroundColor: "#8ec3eb" , height: 600, width: 400, color: "#2a6592"}}>
+    <form onSubmit={handleSubmit} style={{margin: "auto", border: "solid", backgroundColor: "#8ec3eb" , height: 250, width: 300, color: "#2a6592"}}>
       <div>
         <h5>Add a New Bill Here.</h5>
       </div>
       <label>Name: </label>
       <input onChange={handleChange} type="text" name="name" value={userbill.name} required/>
         <br/>
+        <br/>
       <label>Descriptiont: </label>
       <input onChange={handleChange} type="text" name="desciption" value={userbill.description} required/>
         <br/>
+        <br/>
       <label>Amount: </label>
       <input onChange={handleChange} type="number" name="Amount" value={userbill.amount} required/>
+        <br/>
         <br/>
       <input type="submit" value="Add Bill" />
     </form>

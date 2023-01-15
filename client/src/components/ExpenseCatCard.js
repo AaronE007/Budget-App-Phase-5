@@ -22,6 +22,7 @@ const ExpenseCatCard = ({expenseCategory}) => {
     </div>
     <div style={{margin: "auto", border: "solid", backgroundColor: "peachpuff", height: 600, width: 300, color: "#2a6592"}}>
       <div>
+        <h3>Bills Listed:</h3>
         <BillList bills={expenseCategory.user_bills}/>
       </div>
       <br/>
