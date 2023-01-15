@@ -1,5 +1,5 @@
 import React,{ useState, useContext } from "react";
-import {UserContext} from "../context/user";
+import {UserContext} from "../context/User";
 
 const IncomeForm = () => {
   const [name, setName] = useState("")

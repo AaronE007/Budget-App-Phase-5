@@ -1,6 +1,6 @@
 import { useState, useContext } from "react"
 import React  from 'react'
-import { UserContext } from "../context/user"
+import { UserContext } from "../context/User"
 
 const BillForm = () => {
   const {addBill} = useContext(UserContext)
