@@ -1,4 +1,5 @@
 import React from 'react'
+import BillUpdateForm from './BillUpdateForm';
 
 const BillCard = ({bill}) => {
 

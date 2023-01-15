@@ -45,6 +45,8 @@ const UserProvider = ({children}) => {
     setExpenseCat([])
     setIncomes([])
   }
+
+  
  
 
   return (
