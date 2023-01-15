@@ -9,7 +9,7 @@ const BillCard = ({bill}) => {
     setIsFlipped(!isFlipped);
   }
 
-  
+
   return (
     <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
     <div style={{margin: "auto", border: "solid", backgroundColor: "#2a6592", height: 200, width:200, color: "#db9833"}}>
@@ -17,9 +17,9 @@ const BillCard = ({bill}) => {
       <h4>Amount: {bill.amount}</h4>
       <h4>Description: {bill.description}</h4>
     </div>
-  <div style={{margin: "auto", border: "solid", backgroundColor: "peachpuff", height: 600, width: 300, color: "#2a6592"}}>
+  <div style={{margin: "auto", border: "solid", backgroundColor: "peachpuff", height: 200, width: 200, color: "#2a6592"}}>
     <div>
-      <BillUpdate />
+      <BillUpdateForm />
     </div>
     <br/>
       <button onClick={handleClick}>Click to Return to Category</button>
