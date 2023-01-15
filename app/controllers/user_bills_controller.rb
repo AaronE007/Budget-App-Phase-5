@@ -3,7 +3,7 @@ class UserBillsController < ApplicationController
   # GET /user_bills
   def index
     bills = current_user.user_bills
-    render json: bills, include: ['expense_category']
+    render json: bills
   end
 
 
