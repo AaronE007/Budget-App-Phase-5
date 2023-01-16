@@ -8,7 +8,7 @@ class IncomesController < ApplicationController
 
   # POST /incomes
   def create
-    income = current.create!(income_params)
+    income = current_user.create!(income_params)
     render json: income, status: :created
   end
 
