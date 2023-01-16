@@ -9,8 +9,8 @@ class UserBillsController < ApplicationController
 
   # POST /user_bills
   def create
-    expense_category = ExpenseCategory.find_or_create_by(name: params['expense_category'])
-    user_bill = UserBill.create(user_bill_params)
+    expense_category = current_user.expense_categories.find_or_create_by(name: params['expense_category'])
+    user_bill = current_user.user_bills.create!(user_bill_params)
     render json: user_bill
   end
 

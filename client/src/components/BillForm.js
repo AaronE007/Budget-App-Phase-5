@@ -7,7 +7,8 @@ const BillForm = () => {
   const [userbill, setUserBill] = useState({
     name: "", 
     description: "",
-    amount: ""
+    amount: "",
+    expense_category: ""
   })
 
   const handleChange = (e) => {
@@ -21,7 +22,8 @@ const BillForm = () => {
     name: userbill.name,
     description: userbill.description,
     amount: userbill.amount,
-    
+    expense_category: userbill.expenseCategory
+
   }
   
   function handleSubmit(e) {
@@ -54,7 +56,11 @@ const BillForm = () => {
         <br/>
         <br/>
       <label>Amount: </label>
-      <input onChange={handleChange} type="number" name="Amount" value={userbill.amount} required/>
+      <input onChange={handleChange} type="number" name="amount" value={userbill.amount} required/>
+        <br/>
+        <br/>
+      <label>Expense Category: </label>
+      <input onChange={handleChange} type="text" name="expenseCategory" value={userbill.expenseCategory} required/>
         <br/>
         <br/>
       <input type="submit" value="Add Bill" />
