@@ -54,12 +54,32 @@ const UserProvider = ({children}) => {
 
   }
  
-  const addIncome = () => {
-    
+  const addIncome = (income) => {
+    fetch('/incomes', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(income)
+    })
+    .then(res => res.json())
+    .then(data => {
+      setIncomes([...incomes, data])
+    })
   }
 
+  function onDeleteUserBill(id) {
+    // const updatedStocks = stocks.filter((stock) => stock.id !== id);
+    // setStocks(updatedStocks);
+  }
+
+  const deleteUserBill = (id) => {
+    fetch(`user_bills/${id}`, {
+      method: "DELETE",
+    });
+    onDeleteUserBill(id)
+  } 
+
   return (
-    <UserContext.Provider value={{user, loggedIn, expenseCat, incomes, login, logout, signup, addBill, onUpdateBill, addIncome }}>
+    <UserContext.Provider value={{user, loggedIn, expenseCat, incomes, login, logout, signup, addBill, onUpdateBill, addIncome, deleteUserBill }}>
       {children}
     </UserContext.Provider>
   )
