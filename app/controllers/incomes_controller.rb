@@ -8,9 +8,8 @@ class IncomesController < ApplicationController
 
   # POST /incomes
   def create
-    income_category = IncomeCategory.find_or_create_by(name: params['income_category'])
-    income = Income.create(income_params)
-    render json: income
+    income = current.create!(income_params)
+    render json: income, status: :created
   end
 
   # PATCH/PUT /incomes/1
