@@ -4,6 +4,8 @@ import {UserContext} from "../context/User";
 const IncomeForm = () => {
   const [name, setName] = useState("")
   const [amount, setAmount] = useState("")
+  const [timePeriod, setTimePeriod] = useState("")
+
   const {addIncome} = useContext(UserContext)
 
 
@@ -11,7 +13,8 @@ const IncomeForm = () => {
     e.preventDefault()
     addIncome({
       name: name,
-      amount: amount
+      amount: amount,
+      time_period: timePeriod
     })
   }
 
@@ -25,6 +28,10 @@ const IncomeForm = () => {
           <br/>
         <label>Amount: </label>
         <input type="text" id="description" value={amount} onChange={(e) => setAmount(e.target.value)} required/>
+          <br/>
+          <br/>
+        <label>Time Period: </label>
+        <input type="text" id="timePeriod" value={timePeriod} onChange={(e) => setTimePeriod(e.target.value)} required/>
           <br/>
           <br/>
         <input type="submit" value="Add Income!" />

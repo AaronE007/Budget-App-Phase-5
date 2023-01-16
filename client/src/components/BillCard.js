@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import BillUpdateForm from './BillUpdateForm';
 import ReactCardFlip from 'react-card-flip';
-import { UserContext } from '../context/user'
+import { UserContext } from '../context/User'
 
 const BillCard = ({bill}) => {
 
