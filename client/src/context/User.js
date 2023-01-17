@@ -48,6 +48,7 @@ const UserProvider = ({children}) => {
 
   const addBill = () => {
 
+
   }
 
   const onUpdateBill = () => {
@@ -67,8 +68,18 @@ const UserProvider = ({children}) => {
   }
 
   function onDeleteUserBill(id) {
-    // const updatedStocks = stocks.filter((stock) => stock.id !== id);
-    // setStocks(updatedStocks);
+    const updatedState = expenseCat.map((expenseCategory) => {
+        return filteredExpenseCat(expenseCategory, id)
+      })
+    setExpenseCat(updatedState)
+  }
+
+  const filteredExpenseCat = (expenseCategory, userBillId) => {
+    let userBills = expenseCategory["user_bills"].filter((userBill) => {
+      return userBill["id"] !== userBillId
+     })
+   const newExpenseCat = Object.assign(expenseCategory, {"user_bills": userBills})
+   return newExpenseCat
   }
 
   const deleteUserBill = (id) => {
