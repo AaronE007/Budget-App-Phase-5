@@ -4,7 +4,7 @@ class UserSerializer < ActiveModel::Serializer
   has_many :incomes
 
   def expense_categories
-    object.expense_categories.includes(:user_bills).map do |ec|
+    object.unique_expense_categories.includes(:user_bills).map do |ec|
     {
       "id": ec.id,
       "name": ec.name,
@@ -12,6 +12,7 @@ class UserSerializer < ActiveModel::Serializer
     } 
     end 
   end
-
+  
+  
 end
 

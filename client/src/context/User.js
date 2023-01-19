@@ -47,30 +47,28 @@ const UserProvider = ({children}) => {
   }
 
   const addBill = (userbill) => {
-    expenseCategories = expenseCats.expense_categories
-    expenseCategories.find(expenseCategory => {
-      checkExpenseCategory(expenseCategory, userbill)
+
+    const updatedState = expenseCats.map((expenseCategory) => {
+      return modifyExpenseCat(expenseCategory, userbill)
     })
+    setExpenseCats(updatedState)
   }
 
-  const appendExpenseCat = (expenseCat, userbill) => {
-    let userbills = expenseCat.userbills
-  }
-
-  const addStock = (stock) => {
-    setStocks([...stocks, stock])
-    if (!checkCompanyExists(stock)) {
-      setCompanies([...companies, stock.company])
-      setMyCompanies([...mycompanies, stock.company])
+  const modifyExpenseCat = (expenseCat, userbill) => {
+    if(checkExpenseCategory(expenseCat, userbill)){
+      let userbills = expenseCat.userbills
+      userbills.push(userbill)
+      const newExpCat = Object.assign(expenseCat,{"user_bills": userbills})
+      return newExpCat
+    } 
+    else {
+      return expenseCat
     }
-   
   }
+
 
   function checkExpenseCategory(expenseCategory, userbill) {
-    let id = userbill.expense_category_id
-    return expenseCats.expense_categories.some(category => {
-        category.id === id
-    });
+    return expenseCategory.id === userbill.expense_category_id
   }
 
   // const checkCompanyExists = (stock) => {
