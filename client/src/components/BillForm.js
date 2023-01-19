@@ -51,7 +51,7 @@ const BillForm = () => {
       <input onChange={handleChange} type="text" name="name" value={userbill.name} required/>
         <br/>
         <br/>
-      <label>Descriptiont: </label>
+      <label>Description: </label>
       <input onChange={handleChange} type="text" name="description" value={userbill.description} required/>
         <br/>
         <br/>

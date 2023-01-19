@@ -6,7 +6,7 @@ const UserContext = React.createContext();
 const UserProvider = ({children}) => {
 
   const[user, setUser ] = useState({});
-  const[expenseCat, setExpenseCat] = useState([])
+  const[expenseCats, setExpenseCats] = useState([])
   const[incomes, setIncomes] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
 
@@ -17,11 +17,11 @@ const UserProvider = ({children}) => {
       setUser(data) 
         if (data.error) {
         setLoggedIn(false)
-        setExpenseCat([])
+        setExpenseCats([])
         setIncomes([])
       }else {
         setLoggedIn(true)
-        setExpenseCat(data.expense_categories)
+        setExpenseCats(data.expense_categories)
         setIncomes(data.incomes)
       }
     })
@@ -30,7 +30,7 @@ const UserProvider = ({children}) => {
   const login = (user) => {
     setUser(user)
     setLoggedIn(true)
-    setExpenseCat(user.expense_categories)
+    setExpenseCats(user.expense_categories)
     setIncomes(user.incomes)
   }
 
@@ -42,18 +42,58 @@ const UserProvider = ({children}) => {
   const signup = (user) => {
     setUser(user)
     setLoggedIn(true)
-    setExpenseCat([])
+    setExpenseCats([])
     setIncomes([])
   }
 
-  const addBill = () => {
-
-
+  const addBill = (userbill) => {
+    expenseCategories = expenseCats.expense_categories
+    expenseCategories.find(expenseCategory => {
+      checkExpenseCategory(expenseCategory, userbill)
+    })
   }
+
+  const appendExpenseCat = (expenseCat, userbill) => {
+    let userbills = expenseCat.userbills
+  }
+
+  const addStock = (stock) => {
+    setStocks([...stocks, stock])
+    if (!checkCompanyExists(stock)) {
+      setCompanies([...companies, stock.company])
+      setMyCompanies([...mycompanies, stock.company])
+    }
+   
+  }
+
+  function checkExpenseCategory(expenseCategory, userbill) {
+    let id = userbill.expense_category_id
+    return expenseCats.expense_categories.some(category => {
+        category.id === id
+    });
+  }
+
+  // const checkCompanyExists = (stock) => {
+  //   return companies.some((company) => { 
+  //    return company.name === stock.company.name
+  //   })
+    
+  // }
 
   const onUpdateBill = () => {
 
   }
+
+  // function onUpdateStock(updatedStock) {
+  //   const stocksUpdated = stocks.map((stock) => {
+  //     if (stock.id === updatedStock.id) {
+  //       return updatedStock;
+  //     } else {
+  //       return stock;
+  //     }
+  //   });
+  //   setStocks(stocksUpdated);
+  // }
  
   const addIncome = (income) => {
     fetch('/incomes', {
@@ -68,18 +108,18 @@ const UserProvider = ({children}) => {
   }
 
   function onDeleteUserBill(id) {
-    const updatedState = expenseCat.map((expenseCategory) => {
+    const updatedState = expenseCats.map((expenseCategory) => {
         return filteredExpenseCat(expenseCategory, id)
       })
-    setExpenseCat(updatedState)
+    setExpenseCats(updatedState)
   }
 
   const filteredExpenseCat = (expenseCategory, userBillId) => {
     let userBills = expenseCategory["user_bills"].filter((userBill) => {
       return userBill["id"] !== userBillId
      })
-   const newExpenseCat = Object.assign(expenseCategory, {"user_bills": userBills})
-   return newExpenseCat
+   const newExpenseCats = Object.assign(expenseCategory, {"user_bills": userBills})
+   return newExpenseCats
   }
 
   const deleteUserBill = (id) => {
@@ -90,7 +130,7 @@ const UserProvider = ({children}) => {
   } 
 
   return (
-    <UserContext.Provider value={{user, loggedIn, expenseCat, incomes, login, logout, signup, addBill, onUpdateBill, addIncome, deleteUserBill }}>
+    <UserContext.Provider value={{user, loggedIn, expenseCats, incomes, login, logout, signup, addBill, onUpdateBill, addIncome, deleteUserBill }}>
       {children}
     </UserContext.Provider>
   )

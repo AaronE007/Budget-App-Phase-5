@@ -4,8 +4,8 @@ import { UserContext } from '../context/User'
 
 const ExpenseCatList = () => {
 
-  const {expenseCat} = useContext(UserContext)
-  const renderExpenseCat = expenseCat.map(expenseCategory => <ExpenseCatCard key={expenseCategory.id} expenseCategory={expenseCategory}/>)
+  const {expenseCats} = useContext(UserContext)
+  const renderExpenseCat = expenseCats.map(expenseCategory => <ExpenseCatCard key={expenseCategory.id} expenseCategory={expenseCategory}/>)
  
   return (
     <div>
