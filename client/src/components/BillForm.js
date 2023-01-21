@@ -37,7 +37,7 @@ const BillForm = () => {
    })
     .then(res => res.json())
     .then(userbill => {
-          addBill(userbill)
+          console.log(userbill)         
      })
   } 
 

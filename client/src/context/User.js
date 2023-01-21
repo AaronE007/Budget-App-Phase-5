@@ -47,7 +47,6 @@ const UserProvider = ({children}) => {
   }
 
   const addBill = (userbill) => {
-
     const updatedState = expenseCats.map((expenseCategory) => {
       return modifyExpenseCat(expenseCategory, userbill)
     })
@@ -62,13 +61,14 @@ const UserProvider = ({children}) => {
       return newExpCat
     } 
     else {
+      debugger
       return expenseCat
     }
   }
 
 
   function checkExpenseCategory(expenseCategory, userbill) {
-    return expenseCategory.id === userbill.expense_category_id
+    return expenseCategory.id === userbill.expense_category.id
   }
 
   // const checkCompanyExists = (stock) => {
