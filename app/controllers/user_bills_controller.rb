@@ -11,7 +11,7 @@ class UserBillsController < ApplicationController
   def create
     expense_category = ExpenseCategory.find_or_create_by(name: params['expense_category'])
     user_bill = UserBill.create!(user_bill_params.merge(expense_category_id: expense_category.id, user_id: current_user.id))
-    render json: user_bill
+    render json: expense_category
   end
 
   # PATCH/PUT /user_bills/1

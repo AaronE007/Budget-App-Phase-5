@@ -36,8 +36,8 @@ const BillForm = () => {
       body: JSON.stringify(newBill),
    })
     .then(res => res.json())
-    .then(userbill => {
-          console.log(userbill)         
+    .then(expCat => {
+          addBill(expCat)         
      })
   } 
 
