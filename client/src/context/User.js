@@ -53,27 +53,17 @@ const UserProvider = ({children}) => {
       setExpenseCats([...expenseCats, expCat])
     }
     else {
-      const updatedState = expenseCats.map((expenseCategory) => {
-        if (expenseCategory.id === expCat) {
-          return expCat
+      let updatedState = [];
+      expenseCats.forEach((expenseCategory) => {
+        if (expenseCategory.id === expCat.id) {
+          updatedState.push(expCat)
         }
         else {
-          return expenseCategory
+          updatedState.push(expenseCategory)
         }
       })
       setExpenseCats(updatedState)
     }  
-  }
-
-  // const checkCompanyExists = (stock) => {
-  //   return companies.some((company) => { 
-  //    return company.name === stock.company.name
-  //   })
-    
-  // }
-
-  const onUpdateBill = () => {
-
   }
 
   // function onUpdateStock(updatedStock) {
