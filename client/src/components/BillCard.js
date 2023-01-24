@@ -31,7 +31,7 @@ const BillCard = ({bill}) => {
     </div>
   <div style={{margin: "auto", border: "solid", backgroundColor: "peachpuff", height: 250, width: 200, color: "#2a6592"}}>
     <div>
-      <BillUpdateForm />
+      <BillUpdateForm id={id} />
     </div>
     <br/>
       <button onClick={handleClick}>Click to See Updated Bill</button>

@@ -19,7 +19,7 @@ class UserBillsController < ApplicationController
     if user_bill = current_user.user_bills.find(params[:id])
      user_bill.update!(user_bill_params)
      user_bill.reload
-     render json: user_bill
+     render json: user_bill.expense_category
     else 
      no_route
     end 

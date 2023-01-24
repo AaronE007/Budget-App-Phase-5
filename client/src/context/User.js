@@ -66,17 +66,29 @@ const UserProvider = ({children}) => {
     }  
   }
 
-  // function onUpdateStock(updatedStock) {
-  //   const stocksUpdated = stocks.map((stock) => {
-  //     if (stock.id === updatedStock.id) {
-  //       return updatedStock;
-  //     } else {
-  //       return stock;
-  //     }
-  //   });
-  //   setStocks(stocksUpdated);
-  // }
  
+  const onUpdateBill = (expCat) => {
+    let oldExpCat = expenseCats.find(cat => {
+      return cat.id === expCat.id})
+    if (!oldExpCat) {
+      setExpenseCats([...expenseCats, expCat])
+    }
+    else {
+      let updatedState = [];
+      expenseCats.forEach((expenseCategory) => {
+        if (expenseCategory.id === expCat.id) {
+          updatedState.push(expCat)
+        }
+        else {
+          updatedState.push(expenseCategory)
+        }
+      })
+      setExpenseCats(updatedState)
+    }  
+  }
+
+
+
   const addIncome = (income) => {
     fetch('/incomes', {
       method: 'POST',

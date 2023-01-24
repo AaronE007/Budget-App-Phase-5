@@ -34,11 +34,11 @@ const BillUpdateForm = ({id}) => {
       body: JSON.stringify(newBill),
    })
     .then(res => res.json())
-    .then(updatedBill => {
-        if (!updatedBill.errors) {
-          onUpdateBill(updatedBill)
+    .then(expCat => {
+        if (!expCat.errors) {
+          onUpdateBill(expCat)
         } else {
-          const errorsList = updatedBill.errors.map(e => <li>{e}</li>)
+          const errorsList = expCat.errors.map(e => <li>{e}</li>)
           setErrors(errorsList)
         }
      })
@@ -52,11 +52,11 @@ const BillUpdateForm = ({id}) => {
           <br/>
           <br/>
         <label>Description: </label>
-        <input onChange={handleChange} type="number" name="description" value={userbill.description} required/>
+        <input onChange={handleChange} type="text" name="description" value={userbill.description} required/>
           <br/>
           <br/>
         <label>Amount: </label>
-        <input onChange={handleChange} type="text" name="amount" value={userbill.amount} required/>
+        <input onChange={handleChange} type="number" name="amount" value={userbill.amount} required/>
           <br/>
         <input type="submit" value="Change Bill Data" />
       </form>
