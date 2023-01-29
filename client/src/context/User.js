@@ -10,6 +10,7 @@ const UserProvider = ({children}) => {
   const[incomes, setIncomes] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
   const [billsAmount, setBillsAmount] = useState(0)
+  const [incomesAmount, setIncomesAmount] = useState(0)
 
   useEffect(() => {
     fetch('/me')
@@ -24,7 +25,7 @@ const UserProvider = ({children}) => {
         setLoggedIn(true)
         setExpenseCats(data.expense_categories)
         setIncomes(data.incomes)
-        billTotal()
+        setBillsAmount(data.bills_total)
       }
     })
   }, [])
@@ -49,12 +50,29 @@ const UserProvider = ({children}) => {
   }
 
   const billTotal = () => {
-    expenseCats.reduce((total, expCat ) => {
-      return total + expCat.user_bills.reduce((t, userBill) => {
-     return t + userBill.amount })
-    })
+    let bills = expenseCats.map((expCat) => { 
+      return expCat.user_bills.map((bill) => {
+        return parseInt(bill.amount)
+      })
+    }).flat()
+
+    let sum = bills.reduce(sumAmount, 0)
+    setBillsAmount(sum)
   }
 
+  const sumAmount = (total, amount) => {
+    return total + amount;
+  }
+
+  const incomeTotal = () => {
+    let sum = incomes.map(income => parseInt(income.amount)).reduce(sumAmount, 0)
+    setIncomesAmount(sum)
+  }
+
+  useEffect(() => {
+    incomeTotal()
+    billTotal()
+  }, [expenseCats, incomes]);
 
   const addBill = (expCat) => {
     let oldExpCat = expenseCats.find(cat => {
@@ -73,8 +91,6 @@ const UserProvider = ({children}) => {
         }
       })
       setExpenseCats(updatedState)
-      let sum = billTotal()
-      setBillsAmount(sum)
     }  
   }
 
@@ -141,7 +157,7 @@ const UserProvider = ({children}) => {
   } 
 
   return (
-    <UserContext.Provider value={{user, loggedIn, expenseCats, incomes, login, logout, signup, addBill, onUpdateBill, addIncome, deleteUserBill }}>
+    <UserContext.Provider value={{user, loggedIn, expenseCats, incomes, billsAmount, incomesAmount, login, logout, signup, addBill, onUpdateBill, addIncome, deleteUserBill }}>
       {children}
     </UserContext.Provider>
   )

@@ -7,7 +7,7 @@ const IncomeCard = ({income}) => {
     <h3>Name: {income.name}</h3>
     <h4>Amount: {income.amount}</h4>
     <h4>Time Period: {income.time_period}</h4>
-    <img style={{margin: "auto", border: "solid", backgroundColor: "#2a6592", height: 50, width:50, color: "#db9833"}} src={income.image_url} alt="income picture" />
+    <img style={{margin: "auto", border: "solid", backgroundColor: "#2a6592", height: 50, width:50, color: "#db9833"}} src={income.image_url} alt="income" />
   </div>
   )
 }
