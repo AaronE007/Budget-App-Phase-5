@@ -90,10 +90,15 @@ const UserProvider = ({children}) => {
 
 
   const addIncome = (income) => {
+    const incomeData = new FormData()
+    incomeData.append("income[name]", income.name)
+    incomeData.append("income[amount]", income.amount)
+    incomeData.append("income[time_period]", income.time_period)
+    incomeData.append("income[image]", income.image.files[0], income.image.value )
+
     fetch('/incomes', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify(income)
+      body: incomeData
     })
     .then(res => res.json())
     .then(data => {

@@ -5,6 +5,7 @@ const IncomeForm = () => {
   const [name, setName] = useState("")
   const [amount, setAmount] = useState("")
   const [timePeriod, setTimePeriod] = useState("")
+  const [image, setImage] = useState("")
 
   const {addIncome} = useContext(UserContext)
 
@@ -14,7 +15,8 @@ const IncomeForm = () => {
     addIncome({
       name: name,
       amount: amount,
-      time_period: timePeriod
+      time_period: timePeriod,
+      image: e.target.image
     })
   }
 
@@ -33,6 +35,10 @@ const IncomeForm = () => {
         <label>Time Period: </label>
         <input type="text" id="timePeriod" value={timePeriod} onChange={(e) => setTimePeriod(e.target.value)} required/>
           <br/>
+          <br/>
+          <label>Image</label>
+          <input type="file" name="image" id="image" value={image} onChange={(e) => setImage(e.target.value)} required/>
+
           <br/>
         <input type="submit" value="Add Income!" />
         <div>
