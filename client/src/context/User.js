@@ -9,6 +9,7 @@ const UserProvider = ({children}) => {
   const[expenseCats, setExpenseCats] = useState([])
   const[incomes, setIncomes] = useState([])
   const [loggedIn, setLoggedIn] = useState(false)
+  const [billsAmount, setBillsAmount] = useState(0)
 
   useEffect(() => {
     fetch('/me')
@@ -23,6 +24,7 @@ const UserProvider = ({children}) => {
         setLoggedIn(true)
         setExpenseCats(data.expense_categories)
         setIncomes(data.incomes)
+        billTotal()
       }
     })
   }, [])
@@ -46,6 +48,14 @@ const UserProvider = ({children}) => {
     setIncomes([])
   }
 
+  const billTotal = () => {
+    expenseCats.reduce((total, expCat ) => {
+      return total + expCat.user_bills.reduce((t, userBill) => {
+     return t + userBill.amount })
+    })
+  }
+
+
   const addBill = (expCat) => {
     let oldExpCat = expenseCats.find(cat => {
       return cat.id === expCat.id})
@@ -63,6 +73,8 @@ const UserProvider = ({children}) => {
         }
       })
       setExpenseCats(updatedState)
+      let sum = billTotal()
+      setBillsAmount(sum)
     }  
   }
 
