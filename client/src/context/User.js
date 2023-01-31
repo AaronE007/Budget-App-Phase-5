@@ -55,7 +55,7 @@ const UserProvider = ({children}) => {
     const billTotal = () => {
       let bills = expenseCats.map((expCat) => { 
         return expCat.user_bills.map((bill) => {
-          return parseInt(bill.amount)
+          return parseFloat(bill.amount)
         })
       }).flat()
   
@@ -68,7 +68,7 @@ const UserProvider = ({children}) => {
     }
   
     const incomeTotal = () => {
-      let sum = incomes.map(income => parseInt(income.amount)).reduce(sumAmount, 0)
+      let sum = incomes.map(income => parseFloat(income.amount)).reduce(sumAmount, 0)
       setIncomesAmount(sum)
     }
 
