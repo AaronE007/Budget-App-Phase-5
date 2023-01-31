@@ -49,29 +49,31 @@ const UserProvider = ({children}) => {
     setIncomes([])
   }
 
-  const billTotal = () => {
-    let bills = expenseCats.map((expCat) => { 
-      return expCat.user_bills.map((bill) => {
-        return parseInt(bill.amount)
-      })
-    }).flat()
-
-    let sum = bills.reduce(sumAmount, 0)
-    setBillsAmount(sum)
-  }
-
-  const sumAmount = (total, amount) => {
-    return total + amount;
-  }
-
-  const incomeTotal = () => {
-    let sum = incomes.map(income => parseInt(income.amount)).reduce(sumAmount, 0)
-    setIncomesAmount(sum)
-  }
+  
 
   useEffect(() => {
-    incomeTotal()
+    const billTotal = () => {
+      let bills = expenseCats.map((expCat) => { 
+        return expCat.user_bills.map((bill) => {
+          return parseInt(bill.amount)
+        })
+      }).flat()
+  
+      let sum = bills.reduce(sumAmount, 0)
+      setBillsAmount(sum)
+    }
+  
+    const sumAmount = (total, amount) => {
+      return total + amount;
+    }
+  
+    const incomeTotal = () => {
+      let sum = incomes.map(income => parseInt(income.amount)).reduce(sumAmount, 0)
+      setIncomesAmount(sum)
+    }
+
     billTotal()
+    incomeTotal()
   }, [expenseCats, incomes]);
 
   const addBill = (expCat) => {
